@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Saya - Ganesha Event Connect</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Tabler Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/dist/tabler-icons.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div th:replace="fragments/sidebar :: sidebar"></div>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="search-box">
+                <i class="ti ti-search"></i>
+                <input type="text"
+                       placeholder="Cari informasi profil...">
+            </div>
+
+            <div class="top-actions">
+
+                <div class="icon-btn">
+                    <i class="ti ti-bell"></i>
+                    <span class="dot"></span>
+                </div>
+
+                <div class="profile-chip">
+                    <div class="avatar"></div>
+
+                    <div>
+                        <div class="pname">Adi Pratama</div>
+                        <div class="prole">Mahasiswa</div>
+                    </div>
+
+                    <i class="ti ti-chevron-down"
+                       style="font-size:14px;color:var(--text-muted);">
+                    </i>
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- CONTENT -->
+        <main class="content">
+
+            <div class="page-title">
+                <h2>Profil Saya</h2>
+                <p>Informasi akun mahasiswa.</p>
+            </div>
+
+            <div class="panel profile-card">
+
+                <div class="profile-photo">
+                    AP
+                </div>
+
+                <h3>Adi Pratama</h3>
+
+                <div class="pmail">
+                    adi@gmail.com
+                </div>
+
+                <div class="profile-detail">
+
+                    <div class="pd-row">
+                        <span class="k">NIM</span>
+                        <span class="v">202410001</span>
+                    </div>
+
+                    <div class="pd-row">
+                        <span class="k">Program Studi</span>
+                        <span class="v">Informatika</span>
+                    </div>
+
+                    <div class="pd-row">
+                        <span class="k">Kelas</span>
+                        <span class="v">TI-4A</span>
+                    </div>
+
+                </div>
+
+                <button class="btn">
+                    <i class="ti ti-edit"></i>
+                    Edit Profil
+                </button>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</div>
+
+</body>
+</html>

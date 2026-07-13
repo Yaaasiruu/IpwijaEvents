@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absensi - Ganesha Event Connect</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Tabler Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/dist/tabler-icons.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div th:replace="fragments/sidebar :: sidebar"></div>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <div class="search-box">
+                <i class="ti ti-search"></i>
+                <input type="text"
+                       placeholder="Cari riwayat absensi...">
+            </div>
+
+            <div class="top-actions">
+                <div class="icon-btn">
+                    <i class="ti ti-bell"></i>
+                    <span class="dot"></span>
+                </div>
+
+                <div class="profile-chip">
+                    <div class="avatar"></div>
+
+                    <div>
+                        <div class="pname">Adi Pratama</div>
+                        <div class="prole">Mahasiswa</div>
+                    </div>
+
+                    <i class="ti ti-chevron-down"
+                       style="font-size:14px;color:var(--text-muted);">
+                    </i>
+                </div>
+            </div>
+        </header>
+
+        <!-- CONTENT -->
+        <main class="content">
+
+            <!-- TITLE -->
+            <div class="page-title">
+                <h2>Absensi</h2>
+                <p>
+                    Lakukan absensi dan lihat riwayat kehadiran event Anda.
+                </p>
+            </div>
+
+            <!-- EVENT SEDANG BERLANGSUNG -->
+            <div class="panel">
+
+                <div class="panel-head">
+                    <h2>Event Sedang Berlangsung</h2>
+                </div>
+
+                <div class="event-row">
+
+                    <div class="event-thumb">
+                        <i class="ti ti-qrcode"></i>
+                    </div>
+
+                    <div class="event-info">
+                        <h3>Workshop UI/UX Design</h3>
+
+                        <div class="event-meta">
+                            <span>
+                                <i class="ti ti-calendar"></i>
+                                15 Juli 2026
+                            </span>
+
+                            <span>
+                                <i class="ti ti-clock"></i>
+                                08.00 WIB
+                            </span>
+
+                            <span>
+                                <i class="ti ti-map-pin"></i>
+                                Zoom Meeting
+                            </span>
+                        </div>
+                    </div>
+
+                    <button class="primary"
+                            onclick="window.location.href='/attendance/scan'">
+                        <i class="ti ti-qrcode"></i>
+                        Scan QR
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- RIWAYAT KEHADIRAN -->
+            <div class="panel">
+
+                <div class="panel-head">
+                    <h2>Riwayat Kehadiran</h2>
+                    <span class="link">Lihat Semua</span>
+                </div>
+
+                <table class="table">
+
+                    <thead>
+                        <tr>
+                            <th>Event</th>
+                            <th>Tanggal</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Workshop UI/UX Design</td>
+                            <td>15 Juli 2026</td>
+                            <td>
+                                <span class="status success">
+                                    Hadir
+                                </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Seminar Artificial Intelligence</td>
+                            <td>20 Juli 2026</td>
+                            <td>
+                                <span class="status danger">
+                                    Belum Absen
+                                </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Leadership Camp Organisasi Mahasiswa</td>
+                            <td>25 Juli 2026</td>
+                            <td>
+                                <span class="status success">
+                                    Hadir
+                                </span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</div>
+
+</body>
+</html>

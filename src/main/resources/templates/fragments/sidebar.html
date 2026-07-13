@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+    <div th:fragment="sidebar">
+
+        <div class="brand">
+            <i class="ti ti-calendar-event"></i>
+            <span>Ganesha Event Connect</span>
+        </div>
+
+        <div class="nav-group-label">Menu Utama</div>
+
+        <nav class="nav">
+
+            <a class="nav-item" th:href="@{/dashboard}">
+                <i class="ti ti-layout-dashboard"></i>
+                Dashboard
+            </a>
+
+            <a class="nav-item" th:href="@{/events}">
+                <i class="ti ti-calendar-event"></i>
+                Daftar Event
+            </a>
+
+            <a class="nav-item" th:href="@{/my-events}">
+                <i class="ti ti-ticket"></i>
+                Event Saya
+            </a>
+
+            <a class="nav-item" th:href="@{/calendar}">
+                <i class="ti ti-calendar"></i>
+                Kalender Event
+            </a>
+
+        </nav>
+
+
+        <div class="nav-group-label">Aktivitas</div>
+
+        <nav class="nav">
+
+            <a class="nav-item" th:href="@{/attendance}">
+                <i class="ti ti-qrcode"></i>
+                Absensi
+            </a>
+
+            <a class="nav-item" th:href="@{/certificate}">
+                <i class="ti ti-certificate"></i>
+                Sertifikat
+            </a>
+
+            <a class="nav-item" th:href="@{/notification}">
+                <i class="ti ti-bell"></i>
+                Notifikasi
+            </a>
+
+        </nav>
+
+
+        <div class="nav-group-label">Akun</div>
+
+        <nav class="nav">
+
+            <a class="nav-item" th:href="@{/profile}">
+                <i class="ti ti-user-circle"></i>
+                Profil Saya
+            </a>
+
+            <a class="nav-item" th:href="@{/settings}">
+                <i class="ti ti-settings"></i>
+                Pengaturan
+            </a>
+
+            <a class="nav-item" th:href="@{/help}">
+                <i class="ti ti-help-circle"></i>
+                Bantuan
+            </a>
+
+
+            <!-- Logout menjalankan fungsi logout -->
+            <a class="nav-item" th:href="@{/logout}">
+                <i class="ti ti-logout"></i>
+                Logout
+            </a>
+
+        </nav>
+
+    </div>
+
+</body>
+
+</html>

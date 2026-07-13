@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Event - Ganesha Event Connect</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/dist/tabler-icons.min.css">
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/sidebar.css}">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div th:replace="fragments/sidebar :: sidebar"></div>
+        </aside>
+
+        <!-- MAIN -->
+        <div class="main">
+
+            <!-- CONTENT -->
+            <main class="content">
+
+                <div class="page-title">
+                    <h2>Daftar Event</h2>
+                    <p>
+                        Temukan event, seminar, workshop, dan bootcamp terbaru.
+                    </p>
+                </div>
+
+                <div class="event-container">
+
+                    <!-- Jika belum ada event -->
+                    <div th:if="${#lists.isEmpty(events)}">
+                        <p style="text-align:center; padding:40px; color:gray;">
+                            Belum ada event yang tersedia.
+                        </p>
+                    </div>
+
+                    <!-- Event dari Database -->
+                    <div class="event-card" th:each="event : ${events}">
+
+                        <!-- Poster -->
+                        <img th:if="${event.poster != null and !#strings.isEmpty(event.poster)}"
+                            th:src="@{'/uploads/poster/' + ${event.poster}}" alt="Poster Event">
+
+                        <img th:if="${event.poster == null or #strings.isEmpty(event.poster)}"
+                            src="https://placehold.co/600x300" alt="Poster Default">
+
+                        <div class="event-content">
+
+                            <!-- Kategori -->
+                            <span class="badge" th:text="${event.kategori}">
+                                Workshop
+                            </span>
+
+                            <!-- Nama Event -->
+                            <h3 th:text="${event.namaEvent}">
+                                Nama Event
+                            </h3>
+
+                            <!-- Deskripsi -->
+                            <p th:text="${event.deskripsi}">
+                                Deskripsi Event
+                            </p>
+
+                            <!-- Tanggal -->
+                            <div class="event-info">
+                                📅
+                                <span th:text="${#temporals.format(event.tanggal,'dd MMMM yyyy')}">
+                                    15 Juli 2026
+                                </span>
+                            </div>
+
+                            <!-- Jam -->
+                            <div class="event-info">
+                                🕗
+                                <span th:text="${#temporals.format(event.jamMulai,'HH:mm')}"></span>
+                                -
+                                <span th:text="${#temporals.format(event.jamSelesai,'HH:mm')}"></span>
+                                WIB
+                            </div>
+
+                            <!-- Lokasi -->
+                            <div class="event-info">
+                                📍
+                                <span th:text="${event.lokasi}">
+                                    Lokasi
+                                </span>
+                            </div>
+
+                            <!-- Kuota -->
+                            <div class="event-info">
+                                👥 Kuota :
+                                <span th:text="${event.kuota}"></span>
+                            </div>
+
+                            <!-- Harga -->
+                            <div class="event-info">
+                                💰
+                                <span th:if="${event.harga == 0}">
+                                    Gratis
+                                </span>
+
+                                <span th:unless="${event.harga == 0}"
+                                    th:text="'Rp ' + ${#numbers.formatDecimal(event.harga,0,'POINT',0,'COMMA')}">
+                                </span>
+                            </div>
+
+                            <!-- Tombol Daftar -->
+                            <a th:href="@{/registration/{id}(id=${event.id})}" class="btn">
+                                Daftar Sekarang
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

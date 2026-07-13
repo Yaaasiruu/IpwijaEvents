@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ganesha Event Connect — Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/dist/tabler-icons.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/sidebar.css">
+</head>
+
+<body>
+  <div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div th:replace="fragments/sidebar :: sidebar"></div>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="main">
+      <header class="topbar">
+        <div class="search-box">
+          <i class="ti ti-search"></i>
+          <input type="text" placeholder="Cari event, workshop, atau seminar...">
+        </div>
+        <div class="top-actions">
+          <div class="icon-btn"><i class="ti ti-bell"></i><span class="dot"></span></div>
+          <div class="icon-btn"><i class="ti ti-message-circle"></i><span class="dot"></span></div>
+          <div class="profile-chip">
+            <div class="avatar"></div>
+            <div>
+              <div class="pname">Adi Pratama</div>
+              <div class="prole">Mahasiswa</div>
+            </div>
+            <i class="ti ti-chevron-down" style="font-size:14px; color:var(--text-muted);"></i>
+          </div>
+        </div>
+      </header>
+
+      <main class="content">
+
+        <!-- GREETING -->
+        <section class="greeting">
+          <svg class="batik" viewBox="0 0 200 200">
+            <g fill="none" stroke="#fff" stroke-width="1.2">
+              <circle cx="40" cy="40" r="18" />
+              <circle cx="40" cy="40" r="10" />
+              <circle cx="90" cy="40" r="18" />
+              <circle cx="90" cy="40" r="10" />
+              <circle cx="140" cy="40" r="18" />
+              <circle cx="140" cy="40" r="10" />
+              <circle cx="65" cy="80" r="18" />
+              <circle cx="65" cy="80" r="10" />
+              <circle cx="115" cy="80" r="18" />
+              <circle cx="115" cy="80" r="10" />
+              <circle cx="40" cy="120" r="18" />
+              <circle cx="40" cy="120" r="10" />
+              <circle cx="90" cy="120" r="18" />
+              <circle cx="90" cy="120" r="10" />
+              <circle cx="140" cy="120" r="18" />
+              <circle cx="140" cy="120" r="10" />
+            </g>
+          </svg>
+          <div class="greeting-text">
+            <h1>Halo, Adi Pratama 👋</h1>
+            <p>
+              Saat ini tersedia
+              <strong th:text="${totalEvents}">0</strong>
+              event.
+
+              Anda telah mendaftar pada
+              <strong th:text="${totalRegistrations}">0</strong>
+              event.
+
+              Terdapat
+              <strong th:text="${totalAttendance}">0</strong>
+              data absensi.
+
+              Dan
+              <strong th:text="${totalCertificates}">0</strong>
+              sertifikat tersedia.
+            </p>
+            <div class="greeting-cta">
+              <button class="primary" th:onclick="|window.location.href='@{/events}'|">
+                Jelajahi event
+              </button>
+
+              <button class="ghost" th:onclick="|window.location.href='@{/my-events}'|">
+                Lihat jadwal saya
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- STATS -->
+        <section class="stats-grid">
+          <div class="stat-card">
+            <svg class="batik-corner" viewBox="0 0 100 100">
+              <g fill="none" stroke="#0A1533" stroke-width="1.5">
+                <circle cx="25" cy="25" r="12" />
+                <circle cx="60" cy="25" r="12" />
+                <circle cx="42" cy="55" r="12" />
+              </g>
+            </svg>
+            <div class="stat-icon icon-blue"><i class="ti ti-calendar-event"></i></div>
+            <div>
+              <div class="value">12</div>
+              <div class="label">Event terdaftar</div>
+            </div>
+            <div class="trend up"><i class="ti ti-arrow-up-right"></i> 2 baru bulan ini</div>
+          </div>
+          <div class="stat-card">
+            <svg class="batik-corner" viewBox="0 0 100 100">
+              <g fill="none" stroke="#0A1533" stroke-width="1.5">
+                <circle cx="25" cy="25" r="12" />
+                <circle cx="60" cy="25" r="12" />
+                <circle cx="42" cy="55" r="12" />
+              </g>
+            </svg>
+            <div class="stat-icon icon-green"><i class="ti ti-checkbox"></i></div>
+            <div>
+              <div class="value">8</div>
+              <div class="label">Event selesai</div>
+            </div>
+            <div class="trend up"><i class="ti ti-arrow-up-right"></i> 67% tingkat selesai</div>
+          </div>
+          <div class="stat-card">
+            <svg class="batik-corner" viewBox="0 0 100 100">
+              <g fill="none" stroke="#0A1533" stroke-width="1.5">
+                <circle cx="25" cy="25" r="12" />
+                <circle cx="60" cy="25" r="12" />
+                <circle cx="42" cy="55" r="12" />
+              </g>
+            </svg>
+            <div class="stat-icon icon-gold"><i class="ti ti-certificate"></i></div>
+            <div>
+              <div class="value">5</div>
+              <div class="label">Sertifikat dimiliki</div>
+            </div>
+            <div class="trend up"><i class="ti ti-arrow-up-right"></i> 1 menunggu unduh</div>
+          </div>
+          <div class="stat-card">
+            <svg class="batik-corner" viewBox="0 0 100 100">
+              <g fill="none" stroke="#0A1533" stroke-width="1.5">
+                <circle cx="25" cy="25" r="12" />
+                <circle cx="60" cy="25" r="12" />
+                <circle cx="42" cy="55" r="12" />
+              </g>
+            </svg>
+            <div class="stat-icon icon-amber"><i class="ti ti-clipboard-check"></i></div>
+            <div>
+              <div class="value">21</div>
+              <div class="label">Total absensi</div>
+            </div>
+            <div class="trend up"><i class="ti ti-arrow-up-right"></i> Kehadiran 95%</div>
+          </div>
+        </section>
+
+        <!-- 2 COLUMN -->
+        <section class="grid-2col">
+          <div class="col-left">
+
+            <!-- EVENT MENDATANG -->
+            <div class="panel">
+              <div class="panel-head">
+                <h2>Event mendatang</h2><span class="link" th:onclick="|window.location.href='@{/calendar}'|">
+                  Lihat semua
+                </span>
+              </div>
+
+              <div class="event-row">
+                <div class="event-thumb"><i class="ti ti-code"></i></div>
+                <div class="event-info">
+                  <h3>Workshop Web Development Modern</h3>
+                  <div class="event-meta">
+                    <span><i class="ti ti-calendar"></i> 14 Jul 2026, 09.00</span>
+                    <span><i class="ti ti-map-pin"></i> Aula Gedung Rektorat</span>
+                  </div>
+                </div>
+                <span class="badge terdaftar">Terdaftar</span>
+              </div>
+
+              <div class="event-row">
+                <div class="event-thumb alt"><i class="ti ti-presentation"></i></div>
+                <div class="event-info">
+                  <h3>Seminar Nasional Kewirausahaan Digital</h3>
+                  <div class="event-meta">
+                    <span><i class="ti ti-calendar"></i> 18 Jul 2026, 13.00</span>
+                    <span><i class="ti ti-map-pin"></i> Auditorium Kampus 2</span>
+                  </div>
+                </div>
+                <span class="badge menunggu">Menunggu</span>
+              </div>
+
+              <div class="event-row">
+                <div class="event-thumb alt2"><i class="ti ti-users-group"></i></div>
+                <div class="event-info">
+                  <h3>Leadership Camp Organisasi Mahasiswa</h3>
+                  <div class="event-meta">
+                    <span><i class="ti ti-calendar"></i> 2 Jul 2026, 08.00</span>
+                    <span><i class="ti ti-map-pin"></i> Villa Training Center</span>
+                  </div>
+                </div>
+                <span class="badge selesai">Selesai</span>
+              </div>
+            </div>
+
+            <!-- RINGKASAN EVENT SAYA -->
+            <div class="panel">
+              <div class="panel-head">
+                <h2>Ringkasan event saya</h2><span class="link">Detail</span>
+              </div>
+              <div class="summary-grid">
+                <div class="summary-box">
+                  <div class="num">12</div>
+                  <div class="lbl">Terdaftar</div>
+                </div>
+                <div class="summary-box">
+                  <div class="num">8</div>
+                  <div class="lbl">Selesai</div>
+                </div>
+                <div class="summary-box">
+                  <div class="num">4</div>
+                  <div class="lbl">Berlangsung</div>
+                </div>
+              </div>
+              <div class="progress-item">
+                <div class="progress-top"><span class="pname">Workshop &amp; pelatihan</span><span
+                    class="pct">80%</span></div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width:80%;"></div>
+                </div>
+              </div>
+              <div class="progress-item">
+                <div class="progress-top"><span class="pname">Seminar &amp; kuliah umum</span><span
+                    class="pct">55%</span></div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width:55%;"></div>
+                </div>
+              </div>
+              <div class="progress-item">
+                <div class="progress-top"><span class="pname">Organisasi &amp; kepemimpinan</span><span
+                    class="pct">40%</span></div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width:40%;"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-right">
+
+            <!-- CALENDAR -->
+            <div class="panel">
+              <div class="cal-head">
+                <h3>Juli 2026</h3>
+                <div class="cal-nav"><button>‹</button><button>›</button></div>
+              </div>
+              <div class="cal-grid">
+                <div class="dow">M</div>
+                <div class="dow">S</div>
+                <div class="dow">S</div>
+                <div class="dow">R</div>
+                <div class="dow">K</div>
+                <div class="dow">J</div>
+                <div class="dow">S</div>
+                <div class="cal-day muted">29</div>
+                <div class="cal-day muted">30</div>
+                <div class="cal-day">1</div>
+                <div class="cal-day">2</div>
+                <div class="cal-day">3</div>
+                <div class="cal-day">4</div>
+                <div class="cal-day">5</div>
+                <div class="cal-day">6</div>
+                <div class="cal-day today">8</div>
+                <div class="cal-day">7</div>
+                <div class="cal-day">9</div>
+                <div class="cal-day">10</div>
+                <div class="cal-day">11</div>
+                <div class="cal-day">12</div>
+                <div class="cal-day">13</div>
+                <div class="cal-day event">14</div>
+                <div class="cal-day">15</div>
+                <div class="cal-day">16</div>
+                <div class="cal-day">17</div>
+                <div class="cal-day event">18</div>
+                <div class="cal-day">19</div>
+                <div class="cal-day">20</div>
+                <div class="cal-day">21</div>
+                <div class="cal-day">22</div>
+                <div class="cal-day">23</div>
+                <div class="cal-day">24</div>
+                <div class="cal-day">25</div>
+                <div class="cal-day">26</div>
+                <div class="cal-day">27</div>
+                <div class="cal-day">28</div>
+                <div class="cal-day">29</div>
+                <div class="cal-day">30</div>
+                <div class="cal-day">31</div>
+                <div class="cal-day muted">1</div>
+                <div class="cal-day muted">2</div>
+              </div>
+              <div class="cal-legend">
+                <span><i style="background:var(--navy-800);"></i> Hari ini</span>
+                <span><i style="background:var(--blue-500);"></i> Ada event</span>
+              </div>
+            </div>
+
+            <!-- PROFILE -->
+            <div class="panel profile-card">
+              <svg class="batik-side" viewBox="0 0 100 100">
+                <g fill="none" stroke="#0A1533" stroke-width="1.5">
+                  <circle cx="20" cy="20" r="14" />
+                  <circle cx="55" cy="20" r="14" />
+                  <circle cx="38" cy="52" r="14" />
+                </g>
+              </svg>
+              <div class="profile-photo">AP</div>
+              <h3>Adi Pratama</h3>
+              <div class="pmail">adi.pratama@mhs.ganesha.ac.id</div>
+              <div class="profile-detail">
+                <div class="pd-row"><span class="k">NIM</span><span class="v">220102045</span></div>
+                <div class="pd-row"><span class="k">Program studi</span><span class="v">Teknik Informatika</span></div>
+                <div class="pd-row"><span class="k">Kelas</span><span class="v">TI-3B</span></div>
+              </div>
+              <span class="role-chip">Mahasiswa aktif</span>
+            </div>
+
+            <!-- NOTIFICATIONS -->
+            <div class="panel">
+              <div class="panel-head">
+                <h2>Notifikasi terbaru</h2><span class="link">Semua</span>
+              </div>
+              <div class="notif-item">
+                <div class="notif-dot icon-blue"><i class="ti ti-calendar-plus"></i></div>
+                <div class="notif-text">
+                  <p>Registrasi Seminar Kewirausahaan dibuka</p><span>10 menit lalu</span>
+                </div>
+              </div>
+              <div class="notif-item">
+                <div class="notif-dot icon-green"><i class="ti ti-certificate"></i></div>
+                <div class="notif-text">
+                  <p>Sertifikat Leadership Camp siap diunduh</p><span>2 jam lalu</span>
+                </div>
+              </div>
+              <div class="notif-item">
+                <div class="notif-dot icon-amber"><i class="ti ti-qrcode"></i></div>
+                <div class="notif-text">
+                  <p>Gerbang absensi Workshop Web Dev dibuka</p><span>Kemarin</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,155 @@
+/* ===== Sidebar ===== */
+    .sidebar {
+      background: linear-gradient(180deg, var(--navy-900) 0%, var(--navy-800) 100%);
+      color: #EAF0FF;
+      padding: 28px 20px 24px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sidebar::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 15%, rgba(108, 140, 240, 0.25), transparent 40%),
+        radial-gradient(circle at 90% 85%, rgba(199, 154, 70, 0.12), transparent 45%);
+      pointer-events: none;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 6px 8px 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--blue-grad);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      color: #fff;
+      box-shadow: 0 6px 16px rgba(68, 103, 232, 0.45);
+      flex-shrink: 0;
+    }
+
+    .brand-text .name {
+      font-weight: 600;
+      font-size: 15.5px;
+      line-height: 1.25;
+      color: #fff;
+    }
+
+    .brand-text .sub {
+      font-size: 11px;
+      color: #9AA8D6;
+      letter-spacing: .04em;
+    }
+
+    .nav-group-label {
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      color: #7784B3;
+      padding: 16px 12px 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 14px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #C3CCEA;
+      transition: background .15s ease, color .15s ease;
+    }
+
+    .nav-item i {
+      font-size: 19px;
+      width: 19px;
+      text-align: center;
+      color: #8794C4;
+    }
+
+    .nav-item:hover {
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+    }
+
+    .nav-item:hover i {
+      color: #fff;
+    }
+
+    .nav-item.active {
+      background: linear-gradient(135deg, rgba(68, 103, 232, 0.9), rgba(108, 140, 240, 0.65));
+      color: #fff;
+      box-shadow: 0 8px 18px rgba(41, 73, 214, 0.35);
+    }
+
+    .nav-item.active i {
+      color: #fff;
+    }
+
+    .sidebar-footer {
+      margin-top: auto;
+      position: relative;
+      z-index: 1;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .upgrade-card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .upgrade-card i {
+      font-size: 22px;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .upgrade-card p {
+      font-size: 12px;
+      color: #B8C2E6;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    .upgrade-card button {
+      width: 100%;
+      padding: 9px;
+      border: none;
+      border-radius: 10px;
+      background: var(--blue-grad);
+      color: #fff;
+      font-family: 'Poppins';
+      font-weight: 600;
+      font-size: 12.5px;
+      cursor: pointer;
+    }
